@@ -34,18 +34,6 @@ public class AlunoService {
     public List<Alunos> buscarAlunosPorCidade(String cidade) {
         return alunoRepository.findByCidade(cidade); 
       }
-  //@query
-    public List<Alunos> findByNome(String nome) {
-        return alunoRepository.findByNome(nome);
-    }
-  //@query
-    public List<Alunos> findByNomeCompletoLike(String nomeCompleto) {
-        return alunoRepository.findByNomeLike(nomeCompleto);
-    }
-   //@query
-    public List<Alunos> findByTurmaId(Long turmaId) {
-        return alunoRepository.findByTurmaId(turmaId);
-    }
 
     public Alunos salvarAluno(Alunos aluno) {
         return alunoRepository.save(aluno);
@@ -53,7 +41,7 @@ public class AlunoService {
 
     public Alunos updateAluno(Long id, Alunos updatedAluno) {
         Optional<Alunos> existingAluno = alunoRepository.findById(id);
-        if (existingAluno.isPresente()) {
+        if (existingAluno.isPresent()) {
             updatedAluno.setId(id);
             return alunoRepository.save(updatedAluno);
         }
@@ -62,7 +50,7 @@ public class AlunoService {
 
     public boolean deleteAluno(Long id) {
         Optional<Alunos> existingAluno = alunoRepository.findById(id);
-        if (existingAluno.isPresente()) {
+        if (existingAluno.isPresent()) {
             alunoRepository.deleteById(id);
             return true;
         }
