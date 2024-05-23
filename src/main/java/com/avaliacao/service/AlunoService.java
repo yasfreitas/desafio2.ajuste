@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.avaliacao.entities.Alunos;
+import com.avaliacao.entities.Aluno;
 import com.avaliacao.repository.AlunoRepository;
 
 @Service
@@ -18,29 +18,29 @@ public class AlunoService {
         this.alunoRepository = alunoRepository;
     }
 
-    public List<Alunos> getAllAlunos() {
+    public List<Aluno> getAllAlunos() {
         return alunoRepository.findAll();
     }
 
-    public Alunos getAlunoById(Long id) {
-        Optional<Alunos> aluno = alunoRepository.findById(id);
+    public Aluno getAlunoById(Long id) {
+        Optional<Aluno> aluno = alunoRepository.findById(id);
         return aluno.orElse(null);
     }
     //Query Method
-    public List<Alunos> buscarAlunosPorRa(String ra) {
+    public List<Aluno> buscarAlunosPorRa(String ra) {
         return alunoRepository.findByRa(ra); 
       }
     //Query Method 
-    public List<Alunos> buscarAlunosPorCidade(String cidade) {
+    public List<Aluno> buscarAlunosPorCidade(String cidade) {
         return alunoRepository.findByCidade(cidade); 
       }
 
-    public Alunos salvarAluno(Alunos aluno) {
+    public Aluno salvarAluno(Aluno aluno) {
         return alunoRepository.save(aluno);
     }
 
-    public Alunos updateAluno(Long id, Alunos updatedAluno) {
-        Optional<Alunos> existingAluno = alunoRepository.findById(id);
+    public Aluno updateAluno(Long id, Aluno updatedAluno) {
+        Optional<Aluno> existingAluno = alunoRepository.findById(id);
         if (existingAluno.isPresent()) {
             updatedAluno.setId(id);
             return alunoRepository.save(updatedAluno);
@@ -49,7 +49,7 @@ public class AlunoService {
     }
 
     public boolean deleteAluno(Long id) {
-        Optional<Alunos> existingAluno = alunoRepository.findById(id);
+        Optional<Aluno> existingAluno = alunoRepository.findById(id);
         if (existingAluno.isPresent()) {
             alunoRepository.deleteById(id);
             return true;

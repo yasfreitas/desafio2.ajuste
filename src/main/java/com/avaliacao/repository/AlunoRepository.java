@@ -6,11 +6,11 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.avaliacao.entities.Alunos;
+import com.avaliacao.entities.Aluno;
 
-public interface AlunoRepository extends JpaRepository<Alunos, Long> {
+public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 	//Query Methods
-	List<Alunos> findByCidade(String cidade);
-	List<Alunos> findByRa(String ra);
+	List<Aluno> findByCidade(String cidade);
+	List<Aluno> findByRa(String ra);
 
 }
